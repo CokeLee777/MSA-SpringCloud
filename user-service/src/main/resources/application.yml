@@ -1,19 +1,28 @@
-# ?? ?? ??
+# 서버 포트 : 0(랜덤 포트 지정)
 server:
-  port: ${random.int(50000,51000)}  # 50000~51000 ? ?? ??? ??
-#  port: 0 # ?? ??? ??
+  port: 0
 
-# ??? ?? ?? ??
+# 스프링 서버 이름
 spring:
   application:
     name: user-service
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} # 인스턴스 아이디 지정
   client:
-    register-with-eureka: true  # EUREKA ????? ?????? ??? ????? ??? ???? ??
-    fetch-registry: true
+    register-with-eureka: true  # EUREKA Registry 에 등록 여부
+    fetch-registry: true        # EUREKA Registry 에 등록되어있는 정보를 가져올지 여부
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
-  instance:
-#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
-    instance-id: ${spring.application.name}:${server.port}
+
+greeting:
+  message: Welcome to the Simple E-commerce.
