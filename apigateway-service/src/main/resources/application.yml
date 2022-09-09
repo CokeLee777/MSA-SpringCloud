@@ -11,6 +11,12 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  # rabbitmq 정보
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 # config 설정
   profiles:
     active: dev
@@ -18,7 +24,7 @@ spring:
     import: optional:configserver:http://localhost:8888
   cloud:
     config:
-      name: ecommerce-dev
+      name: config-service
 # gateway 설정
     gateway:
       default-filters:
@@ -104,4 +110,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, httptrace
+        include: refresh, health, beans, httptrace, busrefresh

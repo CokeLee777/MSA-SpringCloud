@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: config-service
+# rabbitmq 정보
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     config:
       server:
@@ -11,3 +17,9 @@ spring:
 #          uri: file:///Volumes/T7/Repository/local-config-repo
           uri: https://github.com/CokeLee777/spring-cloud-config
           default-label: master
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
