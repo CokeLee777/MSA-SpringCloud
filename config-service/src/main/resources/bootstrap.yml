@@ -1,0 +1,7 @@
+# 대칭키 설정 -> bootstrap.yml 에 작성해야 동작한다.
+encrypt:
+#  key: ashgdjdgskfgwieyeiugsbcxmnckj123796e7fsd
+  key-store:
+    location: file:///Volumes/T7/JDK_SECRET_KEY/keystore/apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey

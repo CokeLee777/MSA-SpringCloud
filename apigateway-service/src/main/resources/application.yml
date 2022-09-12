@@ -19,12 +19,14 @@ spring:
     password: guest
 # config 설정
   profiles:
-    active: dev
-  config:
-    import: optional:configserver:http://localhost:8888
+    active: default
   cloud:
     config:
       name: config-service
+  config:
+    import: optional:configserver:http://localhost:8888
+    name: user-service
+
 # gateway 설정
     gateway:
       default-filters:

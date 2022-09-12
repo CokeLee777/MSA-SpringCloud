@@ -12,22 +12,23 @@ spring:
     port: 5672
     username: guest
     password: guest
-  datasource:
-    url: jdbc:h2:tcp://localhost/~/testdb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/testdb
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
 # Config Microservice 와 연동해서 설정정보 파일을 불러온다.
-  profiles:
-    active: dev
+  # Config Microservice 세팅
   cloud:
     config:
       name: config-service
+  # Config File 세팅
   config:
     import: optional:configserver:http://localhost:8888
+    name: user-service
 
 eureka:
   instance:
