@@ -25,6 +25,7 @@ public class WebSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, AuthenticationManager authManager)
             throws Exception {
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
                 .permitAll()

@@ -21,18 +21,14 @@ spring:
 #    hibernate:
 #      ddl-auto: create
 # Config Microservice 와 연동해서 설정정보 파일을 불러온다.
-  # Config Microservice 세팅
-  cloud:
-    config:
-      name: config-service
-  # Config File 세팅
   config:
-    import: optional:configserver:http://localhost:8888
-    name: user-service
+    import:
+      - classpath:/bootstrap.yml
 
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} # 인스턴스 아이디 지정
+    hostname: localhost
   client:
     register-with-eureka: true  # EUREKA Registry 에 등록 여부
     fetch-registry: true        # EUREKA Registry 에 등록되어있는 정보를 가져올지 여부
@@ -44,7 +40,7 @@ greeting:
 
 logging:
   level:
-    com.example.userservice: DEBUG
+    com.example.userservice.client: DEBUG
 
 # 액추에이터 설정
 management:
