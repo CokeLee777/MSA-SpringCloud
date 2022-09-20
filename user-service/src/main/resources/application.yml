@@ -6,7 +6,14 @@ server:
 spring:
   application:
     name: user-service
-    # rabbitmq 정보
+  # zipkin
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
+  # rabbitmq 정보
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -47,4 +54,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, busrefresh
+        include: refresh, health, beans, busrefresh, info, metrics, prometheus
