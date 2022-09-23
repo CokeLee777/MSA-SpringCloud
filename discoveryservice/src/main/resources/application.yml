@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: discoveryservice
+  config:
+    import:
+      - classpath:/bootstrap.yml
+
 
 eureka:
   client:
