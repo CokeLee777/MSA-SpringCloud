@@ -52,11 +52,11 @@ public class OrderController {
         ResponseOrder responseOrder = mapper.map(createOrder, ResponseOrder.class);
 
         /* Kafka */
-        orderDto.setOrderId(UUID.randomUUID().toString());
-        orderDto.setTotalPrice(orderDetails.getQuantity() * orderDetails.getUnitPrice());
+//        orderDto.setOrderId(UUID.randomUUID().toString());
+//        orderDto.setTotalPrice(orderDetails.getQuantity() * orderDetails.getUnitPrice());
 
         /* Send this order to the kafka */
-//        kafkaProducer.send("example-catalog-topic", orderDto);
+        kafkaProducer.send("example-catalog-topic", orderDto);
 //        orderProducer.send("orders", orderDto);
 
 //        ResponseOrder responseOrder = mapper.map(orderDto, ResponseOrder.class);
@@ -74,12 +74,12 @@ public class OrderController {
         List<ResponseOrder> result = new ArrayList<>();
         orderList.forEach(o -> result.add(new ModelMapper().map(o, ResponseOrder.class)));
 
-        try {
-            Thread.sleep(1000);
-            throw new Exception("장애 발생");
-        } catch (InterruptedException ex){
-            log.warn(ex.getMessage());
-        }
+//        try {
+//            Thread.sleep(1000);
+//            throw new Exception("장애 발생");
+//        } catch (InterruptedException ex){
+//            log.warn(ex.getMessage());
+//        }
         log.info("After retrieved orders data");
         return ResponseEntity.status(HttpStatus.OK)
                 .body(result);

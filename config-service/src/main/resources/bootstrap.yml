@@ -5,4 +5,4 @@ encrypt:
 #    location: file:///Volumes/T7/JDK_SECRET_KEY/keystore/apiEncryptionKey.jks
     password: test1234
     alias: apiEncryptionKey
-    location: file:/apiEncrytionKey.jks
+    location: file:///Volumes/T7/Repository/MSA-SpringCloud/config-service/apiEncrytionKey.jks

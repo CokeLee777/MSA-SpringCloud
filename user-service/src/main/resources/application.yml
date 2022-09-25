@@ -35,7 +35,7 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} # 인스턴스 아이디 지정
-    hostname: localhost
+#    hostname: localhost
   client:
     register-with-eureka: true  # EUREKA Registry 에 등록 여부
     fetch-registry: true        # EUREKA Registry 에 등록되어있는 정보를 가져올지 여부
